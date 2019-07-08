@@ -1,0 +1,31 @@
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+$nombre = mysql_real_escape_string($_POST['nombre']);
+$apellido = mysql_real_escape_string($_POST['apellido']);
+$ci = mysql_real_escape_string($_POST['documento']);
+$tel = mysql_real_escape_string($_POST['telefono']);
+$cel = mysql_real_escape_string($_POST['celular']);
+$dir = mysql_real_escape_string($_POST['direccion']);
+$bool = true;
+$link = mysqli_connect("localhost", "root", "", "odontologo") or die (mysqli_error()); //Connect to server
+    //mysqli_select_db("odontologo") or die ("Error: No se pudo contectar con la base de datos"); //Connect to database
+$query = mysqli_query($link, "Select * from cliente"); // Query the users table
+//$exists = mysqli_num_rows($query); //Checks if username exists
+	while($row = mysql_fetch_array($query))
+	{
+	$table_cli = $row['ciCli'];
+	if($ci == $table_cli){
+		bool= false;
+		Print '<script>alert("Cedula ya ingresada!");</script>'; // Prompts the user
+        Print '<script>window.location.assign("register.php");</script>'; // redirects to register.php
+        }
+    }
+
+    if($bool)
+    {
+        mysql_query("INSERT INTO cliente (nobreCli, apellidoCli, ciCli, celCli, telCli, dirCli) VALUES ('$nombre', '$apellido', $ci, $tel, $cel, $dir)"); // inserts value into table users
+        Print '<script>alert("Registrado con exito!");</script>'; // Prompts the user
+        Print '<script>window.location.assign("clientes.php");</script>'; // redirects to register.php
+    }
+}
+?>
