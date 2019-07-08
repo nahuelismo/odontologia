@@ -1,13 +1,16 @@
 <?php 
-
-print 'NO CERRAR LA PËSTAÑA';   
-
-		use PHPMailer\PHPMailer\PHPMailer;
-		use PHPMailer\PHPMailer\Exception;
+	
+	use PHPMailer\PHPMailer\PHPMailer;
 		
+		
+	use PHPMailer\PHPMailer\Exception;
+	$Dir = getcwd()."/PHPMailer/";
+		require $Dir.'src\Exception.php';
+		require $Dir.'src\PHPMailer.php';
+		require $Dir.'\src\SMTP.php';
 	
 	$link = mysqli_connect("localhost", "root", "", "odontologo") or die (mysqli_error()); //Connect to server
-	$query = mysqli_query($link, "Select C.*, A.fechaHora from cliente C, agenda A where C.idCli=A.idCli and DATEDIFF(DATE_FORMAT(A.fechaHora, '%Y-%m-%d'),CURDATE())=1 ");
+	$query = mysqli_query($link, "Select Distinct C.*, A.fechaHora from cliente C, agenda A where C.idCli=A.idCli and DATEDIFF(DATE_FORMAT(A.fechaHora, '%Y-%m-%d'),CURDATE())=1 ");
 	while($row = mysqli_fetch_array($query))
 	{
 		$correo = $row['cliMail'];
@@ -18,18 +21,18 @@ print 'NO CERRAR LA PËSTAÑA';
 		$hora = substr(explode(" ", $row['fechaHora'])[1], 0, 5);
 		//print $hora;
 		enviarMail($correo, $nombre, $apellido, $sexo, $hora);
+		
 	}
-
+	Print 'Se han enviado los e-mail a los pacientes con cita el día de mañana';
+	echo "<script>window.close();</script>";
 
 function enviarMail($correo, $nombre, $apellido, $sexo, $hora){
-		$Dir = getcwd()."/PHPMailer/";
-		require $Dir.'src\Exception.php';
-		require $Dir.'src\PHPMailer.php';
-		require $Dir.'\src\SMTP.php';
+		
+		
 		$mail = new PHPMailer(TRUE);
 		$mail->Mailer = "smtp";
 		//$mail->isSMTP();
-		$mail->SMTPDebug = 1;
+		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
 		$mail->Port = 587;
 		$mail->SMTPAuth = true;
@@ -64,12 +67,12 @@ function enviarMail($correo, $nombre, $apellido, $sexo, $hora){
 catch (Exception $e)
 {
    /* PHPMailer exception. */
-   echo $e->errorMessage();
+  // echo $e->errorMessage();
 }
 catch (\Exception $e)
 {
    /* PHP exception (note the backslash to select the global namespace Exception class). */
-   echo $e->getMessage();
+   //echo $e->getMessage();
 }
 //Print '<script>window.location.assign("envioMail.php?insupdel=Enviado");</script>';
 }
