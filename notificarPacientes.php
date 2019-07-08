@@ -29,23 +29,23 @@ function enviarMail($correo, $nombre, $apellido, $sexo, $hora){
 		$mail = new PHPMailer(TRUE);
 		$mail->Mailer = "smtp";
 		//$mail->isSMTP();
-		$mail->SMTPDebug = 3;
+		$mail->SMTPDebug = 1;
 		$mail->Host = 'smtp.gmail.com';
 		$mail->Port = 587;
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = 'tls';
-		$mail->Username = 'nahuelisimo@gmail.com';
-		$mail->Password = 'zutqvbdewrxuqxvw';
+		$mail->Username = 'odontologiaeula@gmail.com';
+		$mail->Password = 'ufzcjkudixhojzlg';
 		$message = $nombre.' '.$apellido.', se le informa que tiene una cita pendiende el dia de mañana a las '.$hora;
 		if($sexo=='m'){
 			$message = 'Sr. '.$message;
 		}else{
 			$message = 'Sra.'.$message;
 		}
-			print $message.'<br>';
+			//print $message.'<br>';
 	try {
    /* Set the mail sender. */
-   $mail->setFrom('nahuelisimo@gmail.com');
+   $mail->setFrom('odontologiaeula@gmail.com');
    //$mail->setSender('nahuelisimo@gmail.com');
 
    /* Add a recipient. */
