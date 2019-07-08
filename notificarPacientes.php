@@ -1,6 +1,7 @@
 <?php 
 
-PRINt 'NO CERRAR LA PËSTAÑA';
+print 'NO CERRAR LA PËSTAÑA';   
+
 		use PHPMailer\PHPMailer\PHPMailer;
 		use PHPMailer\PHPMailer\Exception;
 		
