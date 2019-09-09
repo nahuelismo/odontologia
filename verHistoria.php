@@ -92,7 +92,7 @@
 		
 				$fechaYhora ="";
 				$cli = "";
-		
+					$idAgenda = $row2['id'];
 					$fechaInicio =$row2['fechaHora'];
 					//$fechaFin =$row2['fechaHoraFin'];
 					$fecha = explode(" ", $fechaInicio)[0];
@@ -111,7 +111,7 @@
 					
 				$piezas = $row2['piezas'];
 				$caras = $row2['caras'];
-				$diag = $row2['comentarios'];
+				$diag = $row2['comentariosCita'];
 				$trat = $row2['idTipoTrat'];
 				$tratamiento = "";
 				
@@ -158,7 +158,8 @@
 				print '<td align="center" style="width:1px !important;white-space:nowrap !important">'.$fechaYhora.'</td>';
 				print '<td align="center" style="width:1px !important;white-space:nowrap !important">'.$piezas.'</td>';
 				print '<td align="center" style="width:1px !important;white-space:nowrap !important">'.$stringCaras.'</td>';
-				print '<td width="15%" ><div style="overflow-y: scroll; max-height:150px;">'.$diag.'</div></td>';
+				$diag2 = str_replace(array("\n", "\r"), '☻', $diag);
+				print '<td width="15%" id="Agenda'.$idAgenda.'"><div style="overflow-y: scroll; max-height:150px;">'.$diag.'</div><a href="#!" onClick="editarObs('.$idAgenda.',\''.$diag2.'\')"><i class="material-icons" style="font-size:15px">mode_edit</i>Editar</a></td>';
 				//print '<td align="center"> <a href="#" onClick=\'alert("'.$diag.'")\' >Ver</td>';
 				print '<td align="center" >'.$tratamiento.'</td>';
 				print '</tr>';

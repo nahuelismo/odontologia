@@ -1,0 +1,17 @@
+<?php
+class paciente{
+	private $idCli;
+	private $nombreCli;
+	private $apellidoCli;
+	private $ciCli;
+	private $celCli;
+	private $telCli;
+	private $dirCli;
+	private $sexoCli;
+	private $fechaNac;
+	private $policlinica;
+	private $infoCli;
+	private $saldoFavor;
+	
+	
+}

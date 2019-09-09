@@ -619,6 +619,29 @@ $.post("editCommentImg.php", {todo:todo},
      );
 }
 
+
+function editarObs(idAgenda, diag){
+	var num = idAgenda;
+	idAgenda = "Agenda"+idAgenda;
+	$("#"+idAgenda).empty();
+	$("#"+idAgenda).append("<textarea rows=\"5\" cols=\"50\" placeholder=\"Descripción\" name=\"diagnostico\" id=\"diagnostico"+num+"\"></textarea>");
+	$("#diagnostico"+num).val(diag.replace(/☻/g, '\r'));
+	$("#"+idAgenda).append("<br>");
+	$("#"+idAgenda).append("<input type=\"button\" value=\"Editar\" onclick=\"editarDiag("+num+")\" >");
+	
+}
+function editarDiag(idAgenda){
+var comentario = $("#diagnostico"+idAgenda).val();
+var todo=comentario+"@"+idAgenda;
+$.post("editarDiagnostico.php", {todo:todo},
+         function(data){ //this will be executed once the `script_that_receives_value.php` ends its execution, `data` contains everything said script echoed.
+              //$("#place_where_you_want_the_new_html").html(data);
+			  //alert("Descripcion Editada");
+              window.location.assign("historia.php?insupddelhist=editada");
+         }
+     );
+}
+
 function deselectClient(){
 var coso="a";
 	$.post("desClient.php", {coso:coso},

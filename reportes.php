@@ -27,10 +27,21 @@
 <body>
 
 <div class="cabecera">
-
+<table style="width:100%">
+<tr style="width:100%"><td>
 <a href="inicio.php"><img src="Recursos\logo.png" class="logo"></a>
 <span>ODONTOLOGIA</span>
-<a href="logout.php" style="vertical-align:bottom";>Cerrar Sesion</a>
+</td></tr>
+<tr style="text-align: right" style="width:100%"><td>
+<?php
+print 'Cliente Seleccionado: ';
+$idCli = explode('@', $_SESSION['cliente'])[1];
+$nombreCliente = explode('@', $_SESSION['cliente'])[0];
+print '<a href="seleccionarPaciente.php?cli='.$idCli.'&paciente='.$nombreCliente.'">'.$nombreCliente.'</a>';
+print '   -   ';
+?>
+<a href="logout.php" style="vertical-align:bottom">Cerrar Sesion</a>
+</td></tr></table>
 </div>
 
 <ul id="menu" class="menu">              

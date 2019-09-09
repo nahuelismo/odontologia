@@ -105,10 +105,10 @@
 							print '<td align="center" style="color:red"><b>$'.$deuda.'</b></td>';
 						print '</tr>';
 					
-				print '<tr>';
-				print '<td align="center" colspan="7">';
+				print '<tr align="center" 2>';
+				print '<td align="center" colspan="9">';
 				print '<form id="registro" action="realizarPago.php?trat='.$idTrat.'&cli='.$selected_option.'" method="POST">';
-				print 'Monto a pagar:<input type="number" name="monto" id="monto"><input type="submit" name="pagar" value="Pagar">';
+				print 'Monto a pagar:<br><input type="number" name="monto" id="monto" style="width:10ch"><input type="submit" name="pagar" value="Pagar">';
 				print '</form>';
 				print '</td>';
 				

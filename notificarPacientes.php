@@ -17,7 +17,6 @@
 		$sexo = $row['sexoCli'];
 		$nombre = $row['nombreCli'];
 		$apellido = $row['apellidoCli'];
-	
 		$hora = substr(explode(" ", $row['fechaHora'])[1], 0, 5);
 		//print $hora;
 		enviarMail($correo, $nombre, $apellido, $sexo, $hora);

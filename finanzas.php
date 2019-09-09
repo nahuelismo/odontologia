@@ -27,12 +27,22 @@
 <body onLoad="VerTratamientosCli()">
 
 <div class="cabecera">
-
+<table style="width:100%">
+<tr style="width:100%"><td>
 <a href="inicio.php"><img src="Recursos\logo.png" class="logo"></a>
 <span>ODONTOLOGIA</span>
-<a href="logout.php" style="vertical-align:bottom";>Cerrar Sesion</a>
+</td></tr>
+<tr style="text-align: right" style="width:100%"><td>
+<?php
+print 'Cliente Seleccionado: ';
+$idCli = explode('@', $_SESSION['cliente'])[1];
+$nombreCliente = explode('@', $_SESSION['cliente'])[0];
+print '<a href="seleccionarPaciente.php?cli='.$idCli.'&paciente='.$nombreCliente.'">'.$nombreCliente.'</a>';
+print '   -   ';
+?>
+<a href="logout.php" style="vertical-align:bottom">Cerrar Sesion</a>
+</td></tr></table>
 </div>
-
 <ul id="menu" class="menu">             
 <li><a href="inicio.php" ><i class="material-icons" style="font-size:15px">calendar_today</i>&nbsp Agenda</a></li>          
     <li><a href="clientes.php" ><i class="material-icons" style="font-size:15px">person_outline</i>&nbsp Reg. Paciente</a></li>
