@@ -30,6 +30,7 @@
 <?php
 if(isset($_SESSION['cliente'])){
 print 'Cliente Seleccionado: ';
+$idCli = explode('@', $_SESSION['cliente'])[1];
 $nombreCliente = explode('@', $_SESSION['cliente'])[0];
 print '<a href="seleccionarPaciente.php?cli='.$idCli.'&paciente='.$nombreCliente.'">'.$nombreCliente.'</a>';
 print '   -   ';
